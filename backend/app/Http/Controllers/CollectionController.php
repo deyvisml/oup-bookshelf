@@ -102,6 +102,16 @@ class CollectionController extends Controller
             return response()->json($response, 404);
         }
 
+        // update user
+        if ($request->first_name || $request->last_name) {
+            if (!$user->first_name && !$user->last_name) {
+                $user->update([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                ]);
+            }
+        }
+
         // query
         $query = Collection::query();
 
