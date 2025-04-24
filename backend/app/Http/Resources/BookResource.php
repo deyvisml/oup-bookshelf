@@ -61,7 +61,7 @@ class BookResource extends JsonResource
             'assignment' => [],
             'isDownloaded' => boolval($this->is_downloaded),
             'updateRequired' => false,
-            'thumbnailFilepath' => $this->thumbnail_url,
+            'thumbnailFilepath' => null,
         ];
     }
 }

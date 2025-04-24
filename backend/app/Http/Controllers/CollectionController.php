@@ -28,7 +28,6 @@ class CollectionController extends Controller
     {
         $validation_rules = [
             'title' => 'required|string',
-            'description' => 'string',
             'state_id' => 'required|integer|exists:states,id',
         ];
 
@@ -130,7 +129,7 @@ class CollectionController extends Controller
 
         $response = [
             'status' => true, 
-            'message' => null, 
+            'message' => "The records were found successfully.", 
             'data' => CollectionResource::collection($collections)
         ];
 

@@ -26,7 +26,6 @@ class BookController extends Controller
         $validation_rules = [
             'public_id' => 'required|string',
             'title' => 'required|string',
-            'description' => 'required|string',
             'thumbnail_url' => 'required|string',
             'version' => 'required|numeric',
             'size' => 'required|numeric',
@@ -61,7 +60,7 @@ class BookController extends Controller
 
         $response = [
             'status' => true, 
-            'message' => "Registro creado exitosamente.",
+            'message' => "Record created successfully.",
             'data' => [
                 'book' => $book,
             ],

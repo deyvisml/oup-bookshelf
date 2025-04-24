@@ -25,8 +25,8 @@ class CollectionResource extends JsonResource
         }
 
         return [
-            'id' => $this->id,
-            'title' => $this->title,
+            'id' => strval($this->id),
+            'title' => "👑 " . $this->title,
             'description' => $this->description,
             'eCommerceUrl' => null,
             'thumbnailUrl' => null,
