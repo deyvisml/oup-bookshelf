@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class CollectionBook extends Model
 {
-    protected $table = 'users';
+    protected $table = 'collection_book';
     protected $primaryKey = 'id';
 
     protected $fillable = [
         'id',
-        'email',
-        'first_name',
-        'last_name'
+        'book_order',
+        'collection_id',
+        'book_id'
     ];
 }

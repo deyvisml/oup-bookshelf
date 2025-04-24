@@ -1,8 +1,22 @@
 <?php
 
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\CollectionBookController;
+use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\StateController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::apiResource('users', UserController::class);
+
+Route::apiResource('books', BookController::class);
+
+Route::apiResource('collections', CollectionController::class);
+
+Route::apiResource('collection-book', CollectionBookController::class);
+
+Route::apiResource('memberships', MembershipController::class);
+
+Route::post('/collections/all-by-user-email', [CollectionController::class, 'allByUserEmail']);

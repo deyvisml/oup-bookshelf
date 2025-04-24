@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Membership extends Model
 {
-    protected $table = 'users';
+    protected $table = 'memberships';
     protected $primaryKey = 'id';
 
     protected $fillable = [
         'id',
-        'email',
-        'first_name',
-        'last_name'
+        'expiry_date',
+        'user_id',
+        'collection_id'
     ];
 }
