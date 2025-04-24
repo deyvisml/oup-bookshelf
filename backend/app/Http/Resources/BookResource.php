@@ -23,6 +23,9 @@ class BookResource extends JsonResource
         $book_relative_url = Storage::url($this->zip_download_url);
         $book_absolute_url = url($book_relative_url);
 
+        $thumbnail_relative_url = Storage::url($this->thumbnail_url);
+        $thumbnail_absolute_url = url($thumbnail_relative_url);
+
         return [
             'id' => $this->public_id,
             'title' => $this->title,
@@ -30,7 +33,7 @@ class BookResource extends JsonResource
             'category' => null,
             'author' => null,
             'description' => $this->description,
-            'thumbnailUrl' => $this->thumbnail_url,
+            'thumbnailUrl' => $thumbnail_absolute_url,
             'isbn' => null,
             'wordCount' => null,
             'startPage' => null,

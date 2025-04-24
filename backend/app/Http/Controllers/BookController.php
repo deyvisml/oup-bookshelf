@@ -26,7 +26,6 @@ class BookController extends Controller
         $validation_rules = [
             'public_id' => 'required|string',
             'title' => 'required|string',
-            'thumbnail_url' => 'required|string',
             'version' => 'required|numeric',
             'size' => 'required|numeric',
             'folder' => 'required|string',
@@ -53,6 +52,7 @@ class BookController extends Controller
 
         // Asigna el valor de zip_download_url
         $request->merge([
+            'thumbnail_url' => 'books/' . $request->folder . '/' . $request->public_id . '.jpg',
             'zip_download_url' => 'books/' . $request->folder . '/' . $request->public_id . '.zip',
         ]);
 
