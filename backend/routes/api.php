@@ -7,6 +7,7 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('users', UserController::class);
@@ -20,3 +21,8 @@ Route::apiResource('collection-book', CollectionBookController::class);
 Route::apiResource('memberships', MembershipController::class);
 
 Route::post('/collections/all-by-user-email', [CollectionController::class, 'allByUserEmail']);
+
+Route::get('/generate-link-storage', function () {
+    Artisan::call('storage:link');
+    return response()->json(['message' => 'Storage link created successfully.']);
+});
