@@ -22,6 +22,11 @@ Route::apiResource('memberships', MembershipController::class);
 
 Route::post('/collections/all-by-user-email', [CollectionController::class, 'allByUserEmail']);
 
+Route::get('/config-clear', function () {
+    Artisan::call('config:clear');
+    return response()->json(['message' => 'Config cleared successfully.']);
+});
+
 Route::get('/generate-link-storage', function () {
     Artisan::call('storage:link');
     return response()->json(['message' => 'Storage link created successfully.']);
