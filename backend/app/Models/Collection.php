@@ -13,6 +13,7 @@ class Collection extends Model
         'id',
         'title',
         'description',
+        'html',
         'state_id'
     ];
 
