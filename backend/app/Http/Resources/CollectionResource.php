@@ -24,11 +24,10 @@ class CollectionResource extends JsonResource
             }
         }
 
-        return [
+        $data = [
             'id' => strval($this->id),
             'title' => "👑 " . $this->title,
             'description' => $this->description,
-            'html' => $expired ? null : $this->html,
             'eCommerceUrl' => null,
             'thumbnailUrl' => null,
             'productId' => null,
@@ -38,5 +37,12 @@ class CollectionResource extends JsonResource
                 'expiryDate' => $this->memberships_expiry_date
             ]
         ];
+
+        // if the request is from a browser extension, include the HTML
+        if ($this->is_browser_extension) {
+            $data['html'] = $expired ? null : $this->html;
+        }
+
+        return $data;
     }
 }

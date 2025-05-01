@@ -89,6 +89,11 @@ class CollectionController extends Controller
     {
         $ACTIVE = 1;
         $email = $request->email;
+        $is_browser_extension = true;
+
+        if ($request->has('is_browser_extension')) {
+            $is_browser_extension = $request->is_browser_extension;
+        }
 
         // get user
         $user = User::where('email', $email)->first();
@@ -135,6 +140,7 @@ class CollectionController extends Controller
 
         foreach ($collections as $collection) {
             $collection->books = $collection->books()->get();
+            $collection->setAttribute('is_browser_extension', $is_browser_extension);
         }
 
         $response = [

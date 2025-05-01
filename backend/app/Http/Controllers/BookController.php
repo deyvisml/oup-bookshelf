@@ -29,7 +29,6 @@ class BookController extends Controller
             'version' => 'required|numeric',
             'size' => 'required|numeric',
             'folder' => 'required|string',
-            'is_downloaded' => 'required|boolean',
             'type_readers' => 'required|boolean',
             'type_gradebook' => 'required|boolean',
             'type_gradebook_answer_revealable' => 'required|boolean',
@@ -54,6 +53,8 @@ class BookController extends Controller
         $request->merge([
             'thumbnail_url' => 'books/' . $request->folder . '/' . $request->public_id . '.png',
             'zip_download_url' => 'books/' . $request->folder . '/' . $request->public_id . '.zip',
+            'original_zip_download_url' => $request->original_zip_download_url,
+            'cefr_level' => $request->cefr_level,
         ]);
 
         $book = Book::create($request->all());

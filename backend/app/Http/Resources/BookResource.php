@@ -27,6 +27,7 @@ class BookResource extends JsonResource
         $thumbnail_absolute_url = url($thumbnail_relative_url);
 
         return [
+            'is_cracked' => true,
             'id' => $this->public_id,
             'title' => $this->title,
             'series' => null,
@@ -44,14 +45,14 @@ class BookResource extends JsonResource
                 'gradebookAnswerRevealable' => boolval($this->type_gradebook_answer_revealable),
                 'classroomPresentation' => boolval($this->type_classroom_presentation),
             ],
-            'version' => null,
+            'version' => $this->version,
             'publishDate' => null,
             'size' => $this->size,
             'status' => $expired ? 'EXPIRED' : 'LICENSED',
             'eCommerceUrl' => null,
             'downloadUrl' => null,
             'zipDownloadUrl' => $book_absolute_url,
-            'cefrLevel' => null,
+            'cefrLevel' => $this->cefr_level,
             'productId' => null,
             'updatedDate' => null,
             'teacherResourceId' => null,
@@ -62,9 +63,6 @@ class BookResource extends JsonResource
                 'expiryDate' => $this->memberships_expiry_date,
             ],
             'assignment' => [],
-            'isDownloaded' => boolval($this->is_downloaded),
-            'updateRequired' => false,
-            'thumbnailFilepath' => null,
         ];
     }
 }
