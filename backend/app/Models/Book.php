@@ -15,6 +15,7 @@ class Book extends Model
         'title',
         'description',
         'thumbnail_url',
+        'original_thumbnail_url',
         'version',
         'size',
         'zip_download_url',
