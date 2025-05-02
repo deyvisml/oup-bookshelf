@@ -51,7 +51,7 @@ class BookController extends Controller
 
         // Asigna el valor de zip_download_url
         $request->merge([
-            'thumbnail_url' => 'books/' . $request->folder . '/' . $request->public_id . '.png',
+            'thumbnail_url' => 'books/' . $request->folder . '/' . $request->public_id . '.jpg',
             'original_thumbnail_url' => $request->original_thumbnail_url,
             'zip_download_url' => 'books/' . $request->folder . '/' . $request->public_id . '.zip',
             'original_zip_download_url' => $request->original_zip_download_url,
