@@ -23,6 +23,12 @@ class BookResource extends JsonResource
         $book_relative_url = Storage::url($this->zip_download_url);
         $book_absolute_url = url($book_relative_url);
 
+        if (!empty($this->zip_download_google_drive_file_id)) {
+            $drive_download_book_url_template = 'https://drive.usercontent.google.com/download?id=[FILE_ID]&export=download&confirm=xxx&uuid=xxx&bookId=[BOOK_ID]';
+            $book_absolute_url = str_replace('[FILE_ID]', $this->zip_download_google_drive_file_id, $drive_download_book_url_template);
+            $book_absolute_url = str_replace('[BOOK_ID]', $this->public_id, $book_absolute_url);
+        }
+
         $thumbnail_relative_url = Storage::url($this->thumbnail_url);
         $thumbnail_absolute_url = url($thumbnail_relative_url);
 

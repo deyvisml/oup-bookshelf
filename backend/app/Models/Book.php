@@ -19,6 +19,7 @@ class Book extends Model
         'version',
         'size',
         'zip_download_url',
+        'zip_download_google_drive_file_id',
         'original_zip_download_url',
         'cefr_level',
         'type_readers',
