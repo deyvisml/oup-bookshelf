@@ -99,12 +99,29 @@ class CollectionController extends Controller
         $user = User::where('email', $email)->first();
 
         if (!$user) {
-            $response = [
-                'status' => false, 
-                'message' => 'The user does not exits.', 
-                'data' => null
-            ];
-            return response()->json($response, 404);
+            if ($request->has('is_browser_extension') && $request->is_browser_extension) {
+                // init free trial only for browser extension
+                $user = User::create([
+                    'email' => $email,
+                ]);
+
+                // generate the membership of 2 weeks for all the collections
+                $collections = Collection::where('state_id', $ACTIVE)->get();
+                foreach ($collections as $collection) {
+                    Membership::create([
+                        'user_id' => $user->id,
+                        'collection_id' => $collection->id,
+                        'expiry_date' => now()->addDays(14),
+                    ]);
+                }
+            } else {
+                $response = [
+                    'status' => false, 
+                    'message' => 'The user does not exits.', 
+                    'data' => null
+                ];
+                return response()->json($response, 404);
+            }
         }
 
         // update user
