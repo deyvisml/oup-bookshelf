@@ -111,7 +111,7 @@ class CollectionController extends Controller
                     Membership::create([
                         'user_id' => $user->id,
                         'collection_id' => $collection->id,
-                        'expiry_date' => now()->addDays(14),
+                        'expiry_date' => now()->addDays(3),
                     ]);
                 }
             } else {
